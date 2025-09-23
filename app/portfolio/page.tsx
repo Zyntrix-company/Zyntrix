@@ -2,105 +2,136 @@ import { Navigation } from "@/components/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Bot, Palette, Server } from "lucide-react"
+import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Star, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/components/footer"
 
-const projects = [
+type Project = {
+  id: number
+  title: string
+  category: string
+  description: string
+  image?: string
+  video?: string
+  technologies: string[]
+  features: string[]
+  duration: string
+  client: string
+  year: string
+  icon: LucideIcon
+  link: string
+  showView?: boolean
+  apkUrl?: string
+  review?: {
+    rating: number
+    text: string
+    author: string
+  }
+}
+
+type Stat = {
+  number: string
+  label: string
+}
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Fashion Store",
-    category: "Web Development",
+    title: "One Aim – Client Website",
+    category: "Client Website",
     description:
-      "Complete e-commerce solution with payment gateway integration, inventory management, and responsive design for a fashion retailer.",
-    image: "/modern-ecommerce-fashion-website.jpg",
-    technologies: ["Next.js", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-    features: ["Payment Integration", "Inventory Management", "Admin Dashboard", "Mobile Responsive"],
-    duration: "21 days",
-    client: "Fashion Forward Ltd.",
-    year: "2024",
+      "Corporate website for an IT services company with responsive layout, service pages, and SEO-focused structure.",
+    image: "/ONEAIM.png",
+    technologies: ["Next.js", "Tailwind CSS", "Vercel"],
+    features: ["Responsive Design", "SEO", "Contact & Inquiry Forms"],
+    duration: "—",
+    client: "One Aim",
+    year: "2025",
     icon: Globe,
-    link: "#",
+    link: "https://www.theoneaim.in/",
+    review: {
+      rating: 5,
+      text: "Delivered on time with great SEO and clean design.",
+      author: "Rahul Mehta, One Aim",
+    },
   },
   {
     id: 2,
-    title: "Restaurant Management App",
-    category: "Mobile App",
+    title: "Console Profile & App Publishing",
+    category: "Mobile Publishing",
     description:
-      "Cross-platform mobile application for restaurant order management with real-time notifications and analytics dashboard.",
-    image: "/restaurant-management-mobile-app-interface.jpg",
-    technologies: ["React Native", "Firebase", "Node.js", "Express", "MongoDB"],
-    features: ["Real-time Orders", "Push Notifications", "Analytics", "Multi-platform"],
-    duration: "28 days",
-    client: "Taste Buds Restaurant",
-    year: "2024",
+      "Managing releases and testing tracks on Google Play Console with multiple apps published and in testing.",
+    image: "/b1.jpg",
+    technologies: ["Android", "React Native", "Google Play Console"],
+    features: ["Production Releases", "Closed Testing", "App Management"],
+    duration: "—",
+    client: "Internal",
+    year: "2025",
     icon: Smartphone,
     link: "#",
+    showView: false,
+    review: {
+      rating: 5,
+      text: "Smooth release management and quick turnaround on updates.",
+      author: "Product Lead",
+    },
   },
   {
     id: 3,
-    title: "AI Customer Support Chatbot",
-    category: "AI Integration",
+    title: "Multi‑Vendor E‑Commerce Platform",
+    category: "Web App",
     description:
-      "Intelligent chatbot system with natural language processing for automated customer support and lead generation.",
-    image: "/ai-chatbot-dashboard.png",
-    technologies: ["Python", "OpenAI", "Node.js", "React", "TensorFlow"],
-    features: ["NLP Processing", "Multi-language", "Analytics", "CRM Integration"],
-    duration: "14 days",
-    client: "TechCorp Solutions",
-    year: "2024",
-    icon: Bot,
+      "E‑commerce web app with admin and seller portals: product listings, orders, payouts, and role-based dashboards.",
+    image: "/mobile.png",
+    technologies: ["Flutter", "Node.js", "MongoDB", "Razorpay"],
+    features: ["Admin Dashboard", "Seller Accounts", "Inventory & Orders", "Payments"],
+    duration: "—",
+    client: "—",
+    year: "2025",
+    icon: Code,
     link: "#",
+    apkUrl: "/apks/ecom-app.apk",
+    review: {
+      rating: 4,
+      text: "Robust features and reliable performance across modules.",
+      author: "Store Admin",
+    },
   },
   {
     id: 4,
-    title: "Healthcare Portal",
-    category: "Web Development",
+    title: "AdMob Integration & Monetization",
+    category: "Mobile Monetization",
     description:
-      "Comprehensive healthcare management system with patient records, appointment scheduling, and telemedicine features.",
-    image: "/healthcare-management-portal-dashboard.jpg",
-    technologies: ["Next.js", "PostgreSQL", "Node.js", "Socket.io", "Tailwind CSS"],
-    features: ["Patient Management", "Appointment System", "Video Calls", "Secure Data"],
-    duration: "35 days",
-    client: "MediCare Plus",
-    year: "2023",
-    icon: Code,
+      "Implemented AdMob for multiple apps with banner, interstitial, and rewarded ads, including mediation setup and policy-compliant ad limits.",
+    image: "/c.png",
+    technologies: ["AdMob", "Android", "iOS", "Flutter", "React Native"],
+    features: ["Banner Ads", "Interstitial Ads", "Rewarded Ads", "Mediation"],
+    duration: "—",
+    client: "Multiple Apps",
+    year: "2025",
+    icon: Smartphone,
     link: "#",
+    showView: false,
   },
   {
     id: 5,
-    title: "Brand Identity & Website",
-    category: "Design + Development",
+    title: "Qruzine – QR Scanning System",
+    category: "Full-Stack",
     description:
-      "Complete brand identity design with logo, marketing materials, and modern website for a startup company.",
-    image: "/modern-brand-identity-and-website-design.jpg",
-    technologies: ["Figma", "Next.js", "Framer Motion", "Tailwind CSS"],
-    features: ["Brand Design", "Logo Creation", "Marketing Materials", "Responsive Website"],
-    duration: "18 days",
-    client: "InnovateTech Startup",
-    year: "2023",
-    icon: Palette,
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "Cloud Infrastructure Setup",
-    category: "Technology Integration",
-    description:
-      "Complete cloud migration and infrastructure setup with automated deployment pipelines and monitoring systems.",
-    image: "/cloud-infrastructure-dashboard-monitoring.jpg",
-    technologies: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"],
-    features: ["Cloud Migration", "Auto Deployment", "Monitoring", "Scalable Architecture"],
-    duration: "25 days",
-    client: "DataFlow Enterprises",
-    year: "2023",
-    icon: Server,
+      "QR-based ordering and management for hotels, cafes, and restaurants: table QR menus, order routing, and kitchen dashboard.",
+    image: "/d.png",
+    technologies: ["Node.js", "React", "MongoDB", "Express"],
+    features: ["QR Menus", "Order Management", "Kitchen Display", "Analytics"],
+    duration: "—",
+    client: "Hospitality Businesses",
+    year: "2025",
+    icon: Smartphone,
     link: "#",
   },
 ]
 
-const stats = [
+const stats: Stat[] = [
   { number: "10+", label: "Projects Completed" },
   { number: "100%", label: "Client Satisfaction" },
   { number: "7", label: "Average Delivery Days" },
@@ -124,6 +155,14 @@ export default function PortfolioPage() {
               innovative solutions and cutting-edge technology.
             </p>
 
+            {/* AdMob capability note */}
+            <div className="flex flex-col items-center gap-3 mb-4">
+              <Badge className="bg-primary/10 text-primary border-primary/20">AdMob Integration</Badge>
+              <p className="text-sm text-muted-foreground">
+                We manage an active AdMob account and integrate banner, interstitial, and rewarded ads into apps.
+              </p>
+            </div>
+
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               {stats.map((stat, index) => (
@@ -145,13 +184,24 @@ export default function PortfolioPage() {
               <Card key={project.id} className="overflow-hidden group hover:shadow-xl transition-all duration-300">
                 <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}>
                   <div className={`relative ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      width={500}
-                      height={300}
-                      className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    {project.video ? (
+                      <video
+                        src={project.video}
+                        className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        autoPlay
+                        playsInline
+                        muted
+                        loop
+                      />
+                    ) : (
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        width={500}
+                        height={300}
+                        className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
                     </div>
@@ -208,12 +258,40 @@ export default function PortfolioPage() {
                         </div>
                       </div>
 
-                      <Button variant="outline" className="w-fit bg-transparent" asChild>
-                        <Link href={project.link} className="flex items-center gap-2">
-                          View Project
-                          <ExternalLink className="h-4 w-4" />
-                        </Link>
-                      </Button>
+                      {project.apkUrl && (
+                        <div className="pt-4">
+                          <Button asChild>
+                            <a href={project.apkUrl} download>
+                              Download APK
+                            </a>
+                          </Button>
+                        </div>
+                      )}
+
+                      {project.showView !== false && (
+                        <Button variant="outline" className="w-fit bg-transparent" asChild>
+                          <Link href={project.link} className="flex items-center gap-2">
+                            View Project
+                            <ExternalLink className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                      )}
+
+                      {/* Review Footer */}
+                      {project.review && (
+                        <div className="mt-6 border-t pt-4">
+                          <div className="flex items-center gap-1" aria-label={`Rating: ${project.review.rating} out of 5`}>
+                            {[0, 1, 2, 3, 4].map((i) => (
+                              <Star
+                                key={i}
+                                className={`h-4 w-4 ${i < (project.review?.rating ?? 0) ? "text-yellow-500" : "text-muted-foreground"}`}
+                              />
+                            ))}
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground">“{project.review.text}”</p>
+                          <p className="mt-1 text-xs text-muted-foreground">— {project.review.author}</p>
+                        </div>
+                      )}
                     </CardContent>
                   </div>
                 </div>
