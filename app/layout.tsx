@@ -1,10 +1,33 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import localFont from "next/font/local"
 import "./globals.css"
+
+// Enterprise-level font setup
+// Satoshi (for headings), Inter (for body)
+const satoshi = localFont({
+  src: [
+    {
+      path: "../public/fonts/Satoshi-Variable.ttf",
+      style: "normal",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
+})
+
+const inter = localFont({
+  src: [
+    {
+      path: "../public/fonts/Inter-VariableFont_opsz,wght.ttf",
+      style: "normal",
+    },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Zyntrix - IT Solutions & Web Development Services",
@@ -20,7 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body
+        className={`${satoshi.variable} ${inter.variable} font-sans bg-[#F9FAFB] text-gray-900 antialiased`}
+      >
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
