@@ -342,7 +342,7 @@ const Know = () => {
         {/* About Us Text with scroll trigger */}
         <div 
           ref={aboutRef}
-          className="mt-32 text-right"
+          className="mt-16 text-right"
         >
           <h3 
             className="text-6xl lg:text-8xl font-light text-[#4ade80]"

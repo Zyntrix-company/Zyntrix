@@ -1,4 +1,3 @@
-
 "use client"
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -20,6 +19,11 @@ export default function LetsConnect() {
   const connectedRef = useRef(null);
 
   useEffect(() => {
+    // Remove any leftover inline background styles on mount
+    if (containerRef.current) {
+      containerRef.current.style.backgroundImage = '';
+    }
+
     const ctx = gsap.context(() => {
       // Animate "Let's get" heading
       gsap.from(letsGetRef.current, {
@@ -70,16 +74,7 @@ export default function LetsConnect() {
         opacity: 0,
       });
 
-      // Background color animation on scroll
-      gsap.to(containerRef.current, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 1,
-        },
-        backgroundImage: 'linear-gradient(to bottom right, #34d399, #10b981)',
-      });
+      // DO NOT animate background!
     }, containerRef);
 
     return () => ctx.revert();
@@ -95,7 +90,6 @@ export default function LetsConnect() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add your form submission logic here
     alert('Message sent successfully!');
     setFormData({ name: '', email: '', message: '' });
   };
