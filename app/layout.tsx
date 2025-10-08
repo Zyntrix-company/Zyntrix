@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import localFont from "next/font/local"
 import "./globals.css"
-
+import Navigation from "../components/navigation"
 // Enterprise-level font setup
 // Satoshi (for headings), Inter (for body)
 const satoshi = localFont({
@@ -46,6 +46,7 @@ export default function RootLayout({
       <body
         className={`${satoshi.variable} ${inter.variable} font-sans bg-[#F9FAFB] text-gray-900 antialiased`}
       >
+        <Navigation/>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>

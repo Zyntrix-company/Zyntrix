@@ -9,7 +9,7 @@ import ZyntrixScrollSection from "@/components/zyntrix"
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      <Navigation />
+     
       <HeroSection />
       <Know />
       <ZyntrixScrollSection />

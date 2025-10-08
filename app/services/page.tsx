@@ -1,5 +1,5 @@
 "use client";
-import Navigation from "@/components/navigation"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -194,7 +194,7 @@ const packages = [
 export default function ServicesPage() {
   return (
     <main className="min-h-screen">
-      <Navigation />
+      
 
       {/* Hero Section */}
       <section className="py-32 bg-gradient-to-b from-muted/30 to-background">
