@@ -39,52 +39,41 @@ type Stat = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "One Aim – Client Website",
-    category: "Client Website",
+    title: "Qruzine – QR-based Ordering System",
+    category: "Full-Stack",
     description:
-      "Corporate website for an IT services company with responsive layout, service pages, and SEO-focused structure.",
-    image: "/ONEAIM.png",
-    technologies: ["Next.js", "Tailwind CSS", "Vercel"],
-    features: ["Responsive Design", "SEO", "Contact & Inquiry Forms"],
+      "Qruzine is a comprehensive QR-based ordering platform that transforms the dining experience. Built for enterprise-scale reliability, it enables seamless menu browsing, real-time order placement, secure payment processing, and kitchen management—all through a simple QR code scan.",
+    image: "/heroo.png",
+    technologies: [
+      "Next.js",
+      "Express.js",
+      "TailwindCSS",
+      "Node.js",
+      "MongoDB",
+      "REST APIs",
+      "AWS EC2",
+    ],
+    features: [
+      "Used by 10+ restaurants",
+      "Serving 500+ customers daily",
+      "QR Menus",
+      "Real-time Orders",
+      "Secure Payments",
+      "Kitchen Management",
+    ],
     duration: "—",
-    client: "One Aim",
-    year: "2025",
-    icon: Globe,
-    link: "https://www.theoneaim.in/",
-    review: {
-      rating: 5,
-      text: "Delivered on time with great SEO and clean design.",
-      author: "Rahul Mehta, One Aim",
-    },
-  },
-  {
-    id: 2,
-    title: "Console Profile & App Publishing",
-    category: "Mobile Publishing",
-    description:
-      "Managing releases and testing tracks on Google Play Console with multiple apps published and in testing.",
-    image: "/b1.jpg",
-    technologies: ["Android", "React Native", "Google Play Console"],
-    features: ["Production Releases", "Closed Testing", "App Management"],
-    duration: "—",
-    client: "Internal",
+    client: "Hospitality Businesses",
     year: "2025",
     icon: Smartphone,
     link: "#",
-    showView: false,
-    review: {
-      rating: 5,
-      text: "Smooth release management and quick turnaround on updates.",
-      author: "Product Lead",
-    },
   },
   {
-    id: 3,
+    id: 2,
     title: "Multi‑Vendor E‑Commerce Platform",
     category: "Web App",
     description:
-      "E‑commerce web app with admin and seller portals: product listings, orders, payouts, and role-based dashboards.",
-    image: "/mobile.png",
+      "E‑commerce platform with admin and seller portals: product listings, orders, payouts, and role-based dashboards.",
+    image: "/multi_vendor.png",
     technologies: ["Flutter", "Node.js", "MongoDB", "Razorpay"],
     features: ["Admin Dashboard", "Seller Accounts", "Inventory & Orders", "Payments"],
     duration: "—",
@@ -93,20 +82,31 @@ const projects: Project[] = [
     icon: Code,
     link: "#",
     apkUrl: "/apks/ecom-app.apk",
-    review: {
-      rating: 4,
-      text: "Robust features and reliable performance across modules.",
-      author: "Store Admin",
-    },
+  },
+  {
+    id: 3,
+    title: "Google Play Console – Publishing & Accounts",
+    category: "Mobile Publishing",
+    description:
+      "Managing releases and testing tracks on Google Play Console with multiple apps published, closed testing, and account setups.",
+    image: "/google_console.png",
+    technologies: ["Android", "React Native", "Google Play Console"],
+    features: ["Production Releases", "Closed Testing", "App Management"],
+    duration: "—",
+    client: "Internal",
+    year: "2025",
+    icon: Smartphone,
+    link: "#",
+    showView: false,
   },
   {
     id: 4,
-    title: "AdMob Integration & Monetization",
-    category: "Mobile Monetization",
+    title: "Google AdMob & AdSense Integration",
+    category: "Monetization",
     description:
-      "Implemented AdMob for multiple apps with banner, interstitial, and rewarded ads, including mediation setup and policy-compliant ad limits.",
+      "Implemented AdMob and AdSense for apps and web with banner, interstitial, rewarded formats, mediation setup, and policy-compliant limits.",
     image: "/c.png",
-    technologies: ["AdMob", "Android", "iOS", "Flutter", "React Native"],
+    technologies: ["AdMob", "AdSense", "Android", "iOS", "Flutter", "React Native"],
     features: ["Banner Ads", "Interstitial Ads", "Rewarded Ads", "Mediation"],
     duration: "—",
     client: "Multiple Apps",
@@ -117,18 +117,19 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Qruzine – QR Scanning System",
-    category: "Full-Stack",
+    title: "Systematic Human Resource Management (SHRM) Portal",
+    category: "Web App",
     description:
-      "QR-based ordering and management for hotels, cafes, and restaurants: table QR menus, order routing, and kitchen dashboard.",
-    image: "/d.png",
-    technologies: ["Node.js", "React", "MongoDB", "Express"],
-    features: ["QR Menus", "Order Management", "Kitchen Display", "Analytics"],
+      "An end-to-end HRMS focused on streamlined workflows, accurate data, and team productivity across hiring, onboarding, and performance.",
+    image: "/placeholder.svg",
+    technologies: ["Next.js", "Node.js", "MongoDB", "TailwindCSS", "REST API", "AWS EC2"],
+    features: ["Used by 2 organizations managing 200+ employees", "Hiring & Onboarding", "Attendance & Payroll", "Performance"],
     duration: "—",
-    client: "Hospitality Businesses",
+    client: "—",
     year: "2025",
-    icon: Smartphone,
+    icon: Globe,
     link: "#",
+    showView: false,
   },
 ]
 
@@ -152,8 +153,8 @@ export default function PortfolioPage() {
               Our <span className="text-primary">Portfolio</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-              Explore our successful projects and see how we've helped businesses transform their digital presence with
-              innovative solutions and cutting-edge technology.
+              We build experiences that increase customer retention for every business type—across web and mobile—
+              combining clean design, scalable engineering, and measurable outcomes.
             </p>
 
             {/* AdMob capability note */}
@@ -178,123 +179,105 @@ export default function PortfolioPage() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12">
-            {projects.map((project, index) => (
-              <Card key={project.id} className="overflow-hidden group hover:shadow-xl transition-all duration-300">
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}>
-                  <div className={`relative ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                    {project.video ? (
-                      <video
-                        src={project.video}
-                        className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        autoPlay
-                        playsInline
-                        muted
-                        loop
-                      />
-                    ) : (
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        width={500}
-                        height={300}
-                        className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <Card key={project.id} className="overflow-hidden group hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 rounded-xl border-muted/40">
+                <div className="relative w-full aspect-[16/9]">
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      autoPlay
+                      playsInline
+                      muted
+                      loop
+                    />
+                  ) : (
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  )}
+                  <div className="absolute top-3 left-3">
+                    <Badge className="bg-primary/90 text-primary-foreground text-[11px] px-2 py-0.5">{project.category}</Badge>
+                  </div>
+                </div>
+
+                <div className="p-5 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <project.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="text-xs text-muted-foreground flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {project.year} • {project.duration}
                     </div>
                   </div>
 
-                  <div
-                    className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:col-start-1" : ""}`}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <project.icon className="h-6 w-6 text-primary" />
+                  <CardHeader className="p-0">
+                    <CardTitle className="text-lg md:text-xl tracking-tight">{project.title}</CardTitle>
+                    <CardDescription className="text-sm leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="p-0 space-y-4">
+                    {project.client && project.client !== "—" && (
+                      <div className="text-sm text-muted-foreground flex items-center gap-2">
+                        <Users className="h-4 w-4" />
+                        Client: {project.client}
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4" />
-                          {project.year} • {project.duration}
-                        </div>
+                    )}
+
+                    <div>
+                      <h4 className="font-semibold mb-2 text-sm">Key Features</h4>
+                      <div className="grid grid-cols-1 gap-1.5">
+                        {project.features.slice(0, 3).map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-2 text-sm">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                            {feature}
+                          </div>
+                        ))}
+                        {project.features.length > 3 && (
+                          <div className="text-xs text-muted-foreground">and more…</div>
+                        )}
                       </div>
                     </div>
 
-                    <CardHeader className="p-0 mb-4">
-                      <CardTitle className="text-2xl lg:text-3xl mb-2">{project.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">{project.description}</CardDescription>
-                    </CardHeader>
-
-                    <CardContent className="p-0 space-y-6">
-                      <div>
-                        <h4 className="font-semibold mb-3 flex items-center gap-2">
-                          <Users className="h-4 w-4" />
-                          Client: {project.client}
-                        </h4>
+                    <div>
+                      <h4 className="font-semibold mb-2 text-sm">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.map((tech, techIndex) => (
+                          <Badge key={techIndex} variant="outline" className="text-[11px]">
+                            {tech}
+                          </Badge>
+                        ))}
                       </div>
+                    </div>
 
-                      <div>
-                        <h4 className="font-semibold mb-3">Key Features:</h4>
-                        <div className="grid sm:grid-cols-2 gap-2">
-                          {project.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center gap-2 text-sm">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                              {feature}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold mb-3">Technologies:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, techIndex) => (
-                            <Badge key={techIndex} variant="outline" className="text-xs">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
+                    <div className="flex items-center gap-2 pt-1">
                       {project.apkUrl && (
-                        <div className="pt-4">
-                          <Button asChild>
-                            <a href={project.apkUrl} download>
-                              Download APK
-                            </a>
-                          </Button>
-                        </div>
+                        <Button size="sm" asChild>
+                          <a href={project.apkUrl} download>
+                            Download APK
+                          </a>
+                        </Button>
                       )}
-
                       {project.showView !== false && (
-                        <Button variant="outline" className="w-fit bg-transparent" asChild>
+                        <Button size="sm" variant="outline" className="bg-transparent" asChild>
                           <Link href={project.link} className="flex items-center gap-2">
-                            View Project
+                            View
                             <ExternalLink className="h-4 w-4" />
                           </Link>
                         </Button>
                       )}
-
-                      {/* Review Footer */}
-                      {project.review && (
-                        <div className="mt-6 border-t pt-4">
-                          <div className="flex items-center gap-1" aria-label={`Rating: ${project.review.rating} out of 5`}>
-                            {[0, 1, 2, 3, 4].map((i) => (
-                              <Star
-                                key={i}
-                                className={`h-4 w-4 ${i < (project.review?.rating ?? 0) ? "text-yellow-500" : "text-muted-foreground"}`}
-                              />
-                            ))}
-                          </div>
-                          <p className="mt-2 text-sm text-muted-foreground">“{project.review.text}”</p>
-                          <p className="mt-1 text-xs text-muted-foreground">— {project.review.author}</p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </div>
+                    </div>
+                  </CardContent>
                 </div>
               </Card>
             ))}
