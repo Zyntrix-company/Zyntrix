@@ -8,13 +8,14 @@ import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/components/footer"
 
+
+
 const team = [
   {
     name: "Pooja Devrari",
     role: "Co-Founder & Lead Developer",
-    experience: "5+ Years",
-    image: "/professional-female-developer.png",
-    bio: "Passionate full-stack developer with expertise in modern web technologies and a keen eye for user experience design.",
+    experience: "2+ Years",
+    bio: "Full-stack developer with a passion for creating intuitive digital experiences that solve real-world problems through clean, efficient code.",
     skills: ["React", "Next.js", "Node.js", "UI/UX Design", "Project Management"],
     email: "poojadevrari07@gmail.com",
     phone: "+91 6395183380",
@@ -22,9 +23,8 @@ const team = [
   {
     name: "Vansh Ahuja",
     role: "Co-Founder & Technical Lead",
-    experience: "6+ Years",
-    image: "/professional-male-developer.png",
-    bio: "Expert in backend development and system architecture with a strong focus on scalable solutions and emerging technologies.",
+    experience: "2+ Years",
+    bio: "Backend specialist focused on building robust, scalable systems that power exceptional digital products and drive business growth.",
     skills: ["Python", "MongoDB", "AWS", "DevOps", "AI/ML Integration"],
     email: "contact@Zyntrix.com",
     phone: "+91 8273194768",
@@ -102,9 +102,7 @@ export default function AboutPage() {
               About <span className="text-primary">Zyntrix</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-              We are a passionate team of developers and designers dedicated to transforming businesses through
-              innovative technology solutions. With over 11 years of combined experience, we bring expertise,
-              creativity, and dedication to every project.
+              We're not just another tech company - we're your digital partners in growth. With a fresh perspective and deep technical expertise, we create digital solutions that make a real impact. Our 2+ years of experience has taught us that great technology is about understanding people as much as it's about writing code.
             </p>
 
             <div className="flex flex-wrap justify-center gap-8 mt-12">
@@ -121,8 +119,8 @@ export default function AboutPage() {
                 <div className="text-sm text-muted-foreground">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">11+</div>
-                <div className="text-sm text-muted-foreground">Years Combined Experience</div>
+                <div className="text-3xl font-bold text-primary">2+</div>
+                <div className="text-sm text-muted-foreground">Years of Excellence</div>
               </div>
             </div>
           </div>
@@ -130,39 +128,28 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Zyntrix was born from a shared vision between two passionate developers who recognized the growing
-                  need for reliable, innovative IT solutions in today's digital landscape. With Pooja's expertise in
-                  front-end development and user experience, combined with Vansh's backend and infrastructure knowledge,
-                  we formed a perfect partnership.
+                  Our journey began with a simple idea: technology should work for people, not the other way around. In just two years, we've grown from a two-person startup to a trusted partner for businesses looking to make their mark in the digital world.
                 </p>
                 <p>
-                  Over the past year, we've successfully delivered 10+ projects ranging from simple websites to complex
-                  enterprise applications. Our commitment to quality, innovation, and client satisfaction has earned us
-                  a reputation for excellence in the industry.
+                  What sets us apart? We listen. We understand that behind every line of code is a business goal, a customer need, or a dream waiting to be realized. Our approach combines technical excellence with genuine human understanding.
                 </p>
                 <p>
-                  We believe that technology should empower businesses, not complicate them. That's why we focus on
-                  creating solutions that are not only technically sound but also user-friendly and scalable for future
-                  growth.
+                  We've had the privilege of working with amazing clients who've trusted us to bring their visions to life. From sleek websites to complex web applications, each project has been a learning experience that's helped us grow and refine our craft.
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <Image
-                src="/modern-office-workspace-with-developers.jpg"
-                alt="Zyntrix team workspace"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
+            <div className="realtive">
+              <Image src="/story.png" alt="Story" width={500} height={500} className="-z-1" />
+
             </div>
+
           </div>
         </div>
       </section>
@@ -180,21 +167,17 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className="relative mx-auto mb-4">
-                    <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      width={200}
-                      height={200}
-                      className="rounded-full mx-auto group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-primary">
+                <CardHeader className="text-center p-6">
+                  <div className="relative">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary/50 group-hover:scale-105 transition-transform duration-300">
+                      <User size={32} />
+                    </div>
+                    <Badge className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 bg-primary text-xs">
                       {member.experience}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
-                  <CardDescription className="text-primary font-medium">{member.role}</CardDescription>
+                  <CardTitle className="text-lg mt-4">{member.name}</CardTitle>
+                  <CardDescription className="text-primary/80 font-medium text-sm">{member.role}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="space-y-4">

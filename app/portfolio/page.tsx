@@ -3,7 +3,7 @@ import  Navigation  from "@/components/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Star, type LucideIcon } from "lucide-react"
+import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Star, Music, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/components/footer"
@@ -105,7 +105,7 @@ const projects: Project[] = [
     category: "Monetization",
     description:
       "Implemented AdMob and AdSense for apps and web with banner, interstitial, rewarded formats, mediation setup, and policy-compliant limits.",
-    image: "/c.png",
+    image: "/adsense.png",
     technologies: ["AdMob", "AdSense", "Android", "iOS", "Flutter", "React Native"],
     features: ["Banner Ads", "Interstitial Ads", "Rewarded Ads", "Mediation"],
     duration: "—",
@@ -121,7 +121,7 @@ const projects: Project[] = [
     category: "Web App",
     description:
       "An end-to-end HRMS focused on streamlined workflows, accurate data, and team productivity across hiring, onboarding, and performance.",
-    image: "/placeholder.svg",
+    image: "/shrm.png",
     technologies: ["Next.js", "Node.js", "MongoDB", "TailwindCSS", "REST API", "AWS EC2"],
     features: ["Used by 2 organizations managing 200+ employees", "Hiring & Onboarding", "Attendance & Payroll", "Performance"],
     duration: "—",
@@ -131,6 +131,33 @@ const projects: Project[] = [
     link: "#",
     showView: false,
   },
+  {
+    id: 6,
+    title: "Mizaazi - Music Brand Platform",
+    category: "Web Development",
+    description:
+      "A comprehensive digital platform for Mizaazi to enhance online presence, featuring artist profiles, music streaming, event management, and e-commerce integration for merchandise sales.",
+    image: "/mizzazi.png",
+    technologies: ["Next.js", "Node.js", "MongoDB", "Stripe", "TailwindCSS"],
+    features: [
+      "Artist & Music Showcase",
+      "E-commerce Integration",
+      "Event Management",
+      "Fan Engagement Tools",
+      "Merchandise Store"
+    ],
+    duration: "4 Months",
+    client: "Mizaazi Records",
+    year: "2025",
+    icon: Music,
+    link: "#",
+    showView: true,
+    review: {
+      rating: 5,
+      text: "The platform has transformed our online presence and significantly increased our merchandise sales.",
+      author: "John Doe, Founder"
+    }
+  }
 ]
 
 const stats: Stat[] = [
@@ -150,20 +177,26 @@ export default function PortfolioPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-balance">
-              Our <span className="text-primary">Portfolio</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-              We build experiences that increase customer retention for every business type—across web and mobile—
-              combining clean design, scalable engineering, and measurable outcomes.
-            </p>
+  Our <span className="text-primary">Portfolio</span>
+</h1>
 
-            {/* AdMob capability note */}
-            <div className="flex flex-col items-center gap-3 mb-4">
-              <Badge className="bg-primary/10 text-primary border-primary/20">AdMob Integration</Badge>
-              <p className="text-sm text-muted-foreground">
-                We manage an active AdMob account and integrate banner, interstitial, and rewarded ads into apps.
-              </p>
-            </div>
+<p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+  We craft digital products that don’t just look beautiful—but deliver impact. 
+  From startups to enterprises, we design and build platforms that blend clean UI, 
+  seamless performance, and real business value across web, mobile, and beyond.
+</p>
+
+{/* note */}
+<div className="flex flex-col items-center gap-3 mb-4">
+  <Badge className="bg-primary/10 text-primary border-primary/20">
+    Featured Projects
+  </Badge>
+  <p className="text-sm text-muted-foreground text-center">
+    Explore how we’ve helped brands elevate their digital presence through design, 
+    technology, and innovation.
+  </p>
+</div>
+
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">

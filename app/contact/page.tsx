@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["poojadevrari07@gmail.com"],
+    details: ["zyntrix.company@gmail.com"],
     description: "Send us an email and we'll respond within 24 hours",
   },
   {

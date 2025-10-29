@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -33,8 +34,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-primary transition-colors">
-            Zyntrix
+          <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-primary transition-colors" aria-label="Zyntrix Home">
+            <Image
+              src="/logoo.png"
+              alt="Zyntrix Logo"
+              width={240}
+              height={60}
+              priority
+              className="h-8 w-auto md:h-10"
+            />
           </Link>
 
           {/* Desktop Navigation Links - Hidden on mobile */}

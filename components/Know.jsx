@@ -20,7 +20,7 @@ const Know = () => {
   };
 
   return (
-    <div className="relative min-h-[90vh] bg-[#0a1628] text-white overflow-hidden">
+    <div className="relative min-h-[75vh] bg-[#0a1628] text-white overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1d35] to-[#0a1628]" />
 
@@ -47,7 +47,7 @@ const Know = () => {
         ))}
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-6 py-10 lg:py-16">
+      <div className="relative max-w-7xl mx-auto px-6 py-10 lg:pt-18">
         <motion.div 
           className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
           variants={staggerContainer}
@@ -61,13 +61,13 @@ const Know = () => {
             <motion.h1 
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
-              className="text-5xl lg:text-6xl font-light text-[#4ade80] mb-2"
+              className="text-5xl lg:text-6xl font-light text-[#4ade80] mb-4"
               style={{ 
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 textShadow: '0 10px 30px rgba(74, 222, 128, 0.3)',
               }}
             >
-              Our
+              Zyntrix
             </motion.h1>
 
             {/* Main Heading */}
@@ -119,7 +119,7 @@ const Know = () => {
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
-              href="#about"
+              href="/portfolio"
               className="inline-block text-lg text-white border-b-2 border-white pb-1 hover:text-[#4ade80] hover:border-[#4ade80] transition-colors duration-300"
             >
               Explore our work
@@ -139,7 +139,7 @@ const Know = () => {
                 transition={{ duration: 0.3 }}
                 className="bg-gradient-to-br from-[#0d1d35] to-[#0a1628] p-5 rounded-lg border border-[#4ade80]/20"
               >
-                <p className="text-4xl font-bold text-[#4ade80] mb-2">50+</p>
+                <p className="text-4xl font-bold text-[#4ade80] mb-2">10+</p>
                 <p className="text-sm text-gray-400">Projects Delivered</p>
               </motion.div>
               <motion.div 

@@ -391,17 +391,18 @@ const services = [
 return (
   <section 
     ref={sectionRef}
-    className="relative min-h-screen bg-[#0a1628] text-white py-20 px-6 overflow-hidden"
+    className="relative min-h-screen bg-[#0a1628] text-white py-20 lg:py-28 px-6 overflow-hidden"
   >
     <div className="absolute inset-0 bg-gradient-to-b from-[#0d1d35] via-[#0a1628] to-[#0a1628]" />
     
     <div className="relative max-w-6xl mx-auto">
-      <h2 
-        ref={titleRef}
-        className="text-6xl lg:text-7xl font-light text-[#60a5fa] mb-20 opacity-0 translate-y-8 transition-all duration-1000"
-      >
-        How We Deliver
-      </h2>
+      <h2
+  ref={titleRef}
+  className="text-5xl sm:text-6xl lg:text-7xl font-light text-primary mb-12 sm:mb-20 opacity-0 translate-y-8 transition-all duration-1000 text-center sm:text-left"
+>
+  How We Deliver
+</h2>
+
 
       <div className="space-y-32">
         {services.map((service, index) => (
