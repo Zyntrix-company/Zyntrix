@@ -368,90 +368,91 @@ const KnowWhat = () => {
     </svg>
   );
 
-  const services = [
-    {
-      title: 'Enterprise Product Strategy & Discovery',
-      description: 'We initiate with a comprehensive discovery phase, leveraging enterprise-grade research methodologies to align your product vision with market demands. Our team conducts in-depth stakeholder interviews, market analysis, and user research to identify critical success factors, technical constraints, and ROI potential. We deliver a strategic roadmap that balances innovation with business objectives, ensuring maximum market impact and user adoption.',
-      icon: <ProductDiscoveryIcon />
-    },
-    {
-      title: 'Full-Stack Development & UX Engineering',
-      description: 'Our engineering excellence extends beyond traditional UI/UX. We implement robust, scalable solutions through modern frontend development (React, Vue, Angular), enterprise-grade backend architecture, and comprehensive testing suites. Our approach combines cutting-edge technology with user-centered design principles to deliver high-performance applications that drive business results. We ensure seamless integration, accessibility compliance, and optimal performance across all platforms.',
-      icon: <ProductDesignIcon />
-    },
-    {
-      title: 'Enterprise Deployment & Knowledge Transfer',
-      description: 'Our delivery process is designed for enterprise scalability and maintainability. We provide complete technical documentation, infrastructure as code configurations, deployment playbooks, and comprehensive training sessions. Our thorough knowledge transfer ensures your team is fully equipped to maintain and scale the solution. We offer post-launch support and optimization to ensure long-term success and continuous improvement.',
-      icon: <ProductDeliveryIcon />
-    }
-  ];
+// Removed duplicate ProductDeliveryIcon definition (already declared above)
 
-  return (
-    <section 
-      ref={sectionRef}
-      className="relative min-h-screen bg-[#0a1628] text-white py-20 px-6 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d1d35] via-[#0a1628] to-[#0a1628]" />
-      
-      <div className="relative max-w-6xl mx-auto">
-        <h2 
-          ref={titleRef}
-          className="text-6xl lg:text-7xl font-light text-[#60a5fa] mb-20 opacity-0 translate-y-8 transition-all duration-1000"
-        >
-          Know what
-        </h2>
+const services = [
+  {
+    title: 'Strategy & Product Discovery',
+    description: 'We start with clarity: goals, audience, and opportunity. Through research, stakeholder interviews, and quick validation, we define the right problem to solve and a roadmap that balances impact and effort—so you build what matters.',
+    icon: <ProductDiscoveryIcon />
+  },
+  {
+    title: 'Design, Development & Integrations',
+    description: 'We design clean, accessible interfaces and build with modern stacks (Web, App, APIs). We connect your tools—payments, CRM, analytics—and add AI/LLM features where they create leverage. Everything is tested for performance, security, and reliability.',
+    icon: <ProductDesignIcon />
+  },
+  {
+    title: 'Launch, Deployment & Growth',
+    description: 'Zero‑drama releases with CI/CD and cloud deployment. Post‑launch, we drive adoption with SEO and digital marketing, set up retention journeys, and iterate with data. Documentation and handover ensure your team can scale with confidence.',
+    icon: <ProductDeliveryIcon />
+  }
+];
 
-        <div className="space-y-32">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              ref={el => cardsRef.current[index] = el}
-              className="service-card grid md:grid-cols-2 gap-12 items-center opacity-0 translate-y-20 transition-all duration-1000"
-            >
-              <div className={`flex justify-center ${index === 1 ? 'md:order-2' : ''}`}>
-                <div className="relative group transform transition-transform duration-500 hover:scale-105">
-                  {service.icon}
-                </div>
-              </div>
+return (
+  <section 
+    ref={sectionRef}
+    className="relative min-h-screen bg-[#0a1628] text-white py-20 px-6 overflow-hidden"
+  >
+    <div className="absolute inset-0 bg-gradient-to-b from-[#0d1d35] via-[#0a1628] to-[#0a1628]" />
+    
+    <div className="relative max-w-6xl mx-auto">
+      <h2 
+        ref={titleRef}
+        className="text-6xl lg:text-7xl font-light text-[#60a5fa] mb-20 opacity-0 translate-y-8 transition-all duration-1000"
+      >
+        How We Deliver
+      </h2>
 
-              <div className={index === 1 ? 'md:order-1' : ''}>
-                <h3 className="text-3xl font-bold mb-6 text-white">
-                  {service.title}
-                </h3>
-                <p className="text-gray-300 text-base leading-relaxed">
-                  {service.description}
-                </p>
+      <div className="space-y-32">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            ref={el => cardsRef.current[index] = el}
+            className="service-card grid md:grid-cols-2 gap-12 items-center opacity-0 translate-y-20 transition-all duration-1000"
+          >
+            <div className={`flex justify-center ${index === 1 ? 'md:order-2' : ''}`}>
+              <div className="relative group transform transition-transform duration-500 hover:scale-105">
+                {service.icon}
               </div>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-16 text-right">
-          
-        </div>
+            <div className={index === 1 ? 'md:order-1' : ''}>
+              <h3 className="text-3xl font-bold mb-6 text-white">
+                {service.title}
+              </h3>
+              <p className="text-gray-300 text-base leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="absolute bottom-8 right-8">
-        <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-      </div>
+      <div className="mt-16 text-right"></div>
+    </div>
 
-      <style jsx>{`
-        .service-card.is-visible {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-        
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-        
-        .animate-pulse {
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-      `}</style>
-    </section>
-  );
+    <div className="absolute bottom-8 right-8">
+      <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+    </div>
+
+    <style jsx>{`
+      .service-card.is-visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    `}</style>
+  </section>
+);
+
 };
 
 export default KnowWhat;

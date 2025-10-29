@@ -12,10 +12,10 @@ export default function HomePage() {
      
       <HeroSection />
       <Know />
-      <ZyntrixScrollSection />
+      
       <ServicesOverview />
       <KnowWhat/>
-      <LetsConnect />
+      
       <Footer />
     </main>
   )
