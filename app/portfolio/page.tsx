@@ -1,12 +1,13 @@
 "use client";
-import  Navigation  from "@/components/navigation"
+import Navigation from "@/components/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Star, Music, type LucideIcon } from "lucide-react"
+import { ExternalLink, Calendar, Users, Code, Smartphone, Globe, Star, Music, X, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/components/footer"
+import { useEffect, useMemo, useState } from "react"
 
 type Project = {
   id: number
@@ -65,7 +66,7 @@ const projects: Project[] = [
     client: "Hospitality Businesses",
     year: "2025",
     icon: Smartphone,
-    link: "#",
+    link: "https://qruzine.com/",
   },
   {
     id: 2,
@@ -80,7 +81,7 @@ const projects: Project[] = [
     client: "—",
     year: "2025",
     icon: Code,
-    link: "#",
+    link: "https://landing-page2-f1v9.vercel.app/",
     apkUrl: "/apks/ecom-app.apk",
   },
   {
@@ -128,7 +129,7 @@ const projects: Project[] = [
     client: "—",
     year: "2025",
     icon: Globe,
-    link: "#",
+    link: "https://shrm-temp-wf5b.vercel.app/landing",
     showView: false,
   },
   {
@@ -150,7 +151,7 @@ const projects: Project[] = [
     client: "Mizaazi Records",
     year: "2025",
     icon: Music,
-    link: "#",
+    link: "https://www.mizaazi.live/",
     showView: true,
     review: {
       rating: 5,
@@ -168,6 +169,46 @@ const stats: Stat[] = [
 ]
 
 export default function PortfolioPage() {
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [isProbablyBlocked, setIsProbablyBlocked] = useState(false)
+
+  const safePreviewUrl = useMemo(() => (previewUrl && previewUrl !== "#" ? previewUrl : null), [previewUrl])
+
+  useEffect(() => {
+    if (!isPreviewOpen) return
+    setIsProbablyBlocked(false)
+    const t = setTimeout(() => {
+      setIsProbablyBlocked(true)
+    }, 3500)
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault()
+        closePreview()
+      }
+    }
+    document.addEventListener("keydown", onKey)
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      clearTimeout(t)
+      document.removeEventListener("keydown", onKey)
+      document.body.style.overflow = originalOverflow
+    }
+  }, [isPreviewOpen, previewUrl])
+
+  const openPreview = (url: string) => {
+    setPreviewUrl(url)
+    setIsPreviewOpen(true)
+  }
+
+  const closePreview = () => {
+    setIsPreviewOpen(false)
+    setPreviewUrl(null)
+    setIsProbablyBlocked(false)
+  }
+
   return (
     <main className="min-h-screen">
       <Navigation />
@@ -294,19 +335,12 @@ export default function PortfolioPage() {
                     </div>
 
                     <div className="flex items-center gap-2 pt-1">
-                      {project.apkUrl && (
-                        <Button size="sm" asChild>
-                          <a href={project.apkUrl} download>
-                            Download APK
-                          </a>
-                        </Button>
-                      )}
-                      {project.showView !== false && (
-                        <Button size="sm" variant="outline" className="bg-transparent" asChild>
-                          <Link href={project.link} className="flex items-center gap-2">
-                            View
-                            <ExternalLink className="h-4 w-4" />
-                          </Link>
+                      {project.showView !== false && project.link && project.link !== "#" && (
+                        <Button
+                          size="sm"
+                          onClick={() => openPreview(project.link)}
+                        >
+                          <span className="flex items-center gap-2">View<ExternalLink className="h-4 w-4" /></span>
                         </Button>
                       )}
                     </div>
@@ -341,6 +375,56 @@ export default function PortfolioPage() {
 
       {/* Footer Section */}
       <Footer />
+
+      {isPreviewOpen && (
+        <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Website preview">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={closePreview} />
+          <div className="absolute inset-4 md:inset-8 bg-background rounded-xl overflow-hidden shadow-2xl border">
+            <div className="flex items-center justify-between px-4 py-2 border-b bg-muted/40">
+              <div className="text-sm text-muted-foreground truncate">
+                {safePreviewUrl || "Preview"}
+              </div>
+              <div className="flex items-center gap-2">
+                {safePreviewUrl && (
+                  <Button size="sm" variant="ghost" asChild>
+                    <a href={safePreviewUrl} target="_blank" rel="noreferrer">
+                      <span className="flex items-center gap-1.5">Open in new tab<ExternalLink className="h-4 w-4" /></span>
+                    </a>
+                  </Button>
+                )}
+                <Button size="icon" variant="ghost" onClick={closePreview}>
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+            <div className="w-full h-[calc(100%-44px)] bg-muted">
+              {safePreviewUrl ? (
+                <iframe
+                  src={safePreviewUrl}
+                  className="w-full h-full"
+                  sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">
+                  No preview available
+                </div>
+              )}
+              {isProbablyBlocked && (
+                <div className="absolute inset-x-4 bottom-4 md:inset-auto md:bottom-6 md:right-6 bg-background/95 border rounded-lg p-3 shadow-lg">
+                  <div className="text-sm">This site may block embedding in an iframe.</div>
+                  {safePreviewUrl && (
+                    <div className="mt-2">
+                      <Button size="sm" asChild>
+                        <a href={safePreviewUrl} target="_blank" rel="noreferrer">Open in new tab</a>
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

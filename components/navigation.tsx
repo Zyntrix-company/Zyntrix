@@ -39,9 +39,9 @@ export default function Navigation() {
               src="/logoo.png"
               alt="Zyntrix Logo"
               width={240}
-              height={60}
+              height={240}
               priority
-              className="h-8 w-auto md:h-10"
+              className="h-16 w-auto md:h-22"
             />
           </Link>
 

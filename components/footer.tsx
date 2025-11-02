@@ -84,7 +84,7 @@ export function Footer() {
             <div className="space-y-3 text-sm text-muted-foreground">
               <div>
                 <div className="font-medium text-foreground mb-1">Experience</div>
-                <div>11+ Years Combined</div>
+                <div>1+ Years Combined</div>
               </div>
               <div>
                 <div className="font-medium text-foreground mb-1">Projects</div>
