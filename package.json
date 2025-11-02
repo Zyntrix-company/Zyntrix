@@ -45,6 +45,7 @@
     "@splinetool/react-spline": "^4.1.0",
     "@sveltejs/kit": "latest",
     "@vercel/analytics": "latest",
+    "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

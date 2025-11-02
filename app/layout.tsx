@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type React from "react";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
@@ -5,7 +6,6 @@ import { Suspense } from "react";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navigation from "../components/navigation";
-
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -72,7 +72,12 @@ export default function RootLayout({
       >
         <Navigation />
         <Suspense fallback={null}>{children}</Suspense>
+
+        {/* Vercel Analytics */}
         <Analytics />
+
+        {/* ✅ Add Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
