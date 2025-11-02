@@ -6,7 +6,7 @@ import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navigation from "../components/navigation";
 
-// 🎨 Fonts: Playfair Display (Headings) + DM Sans (Body)
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
